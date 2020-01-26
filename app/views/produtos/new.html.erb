@@ -1,4 +1,6 @@
 <html>
+    <%= nav_bar brand: "Dev_Market", brand_link: root_url %>
+    <div class="container">
     <body>
         <%= form_for Produto.new do |form| %>
 
@@ -41,4 +43,5 @@
             <%= form.submit "Criar", class:"btn btn-primary" %>            
         <% end %>
     </body>
+    </div>
 </html>
