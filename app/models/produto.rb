@@ -1,4 +1,7 @@
 class Produto < ApplicationRecord
+    belongs_to :departamento
+
+
     validates :nome, presence: true
     validates :descricao, presence: true
     validates :preco, presence: true
