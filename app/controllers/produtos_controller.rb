@@ -6,15 +6,29 @@ class ProdutosController < ApplicationController
     end
 
     def create
-        produto = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade)
-        Produto.create produto
-        redirect_to root_path
+        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade)
+        @produto = Produto.new valores
+        if @produto.save
+            flash[:notice] = "Produto salvo com sucesso!"
+            redirect_to root_path
+        else
+            render :new
+        end
+    end
+
+    def new
+        @produto = Produto.new
     end
 
     def destroy
         id = params[:id]
-        Produto.destroy id
-        redirect_to root_path
+        @produto = Produto.destroy id
+        if @produto.destroy
+            flash[:notice] = "Produto deletado com sucesso!"
+            redirect_to root_path
+        else
+            render :index
+        end
     end
 
     def busca
