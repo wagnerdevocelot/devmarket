@@ -2,10 +2,28 @@
     <p id="notice"><%= notice %></p>
 </div>    
 
-<p>
-  <strong>Nome:</strong>
-  <%= @departamento.nome %>
-</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td>Departamento</td>
+            <td>Preço</td>
+            <td>Quantidade</td>
+        </tr>
+    </thead>
+    <tbody>
+    <% @produtos_por_departamento.each do |produto| %>    
+        <tr>
+            <td><%= produto.nome %></td>
+            <td><%= produto.descricao %></td>
+            <td><%= produto.departamento.nome %></td>
+            <td><%= produto.preco %></td>
+            <td><%= produto.quantidade %></td>
+        </tr>
+    <% end %>    
+    </tbody>
+</table>
 
 
 <div class="field">

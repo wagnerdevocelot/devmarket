@@ -18,9 +18,9 @@
     <% @departamentos.each do |departamento| %>
       <tr>
         <td><%= departamento.nome %></td>
-        <td><%= link_to 'Show', departamento, class:"btn btn-success" %></td>
-        <td><%= link_to 'Edit', edit_departamento_path(departamento), class:"btn btn-info" %></td>
-        <td><%= link_to 'Destroy', departamento, method: :delete, class:"btn btn-danger", data: { confirm: 'Tem certeza?' } %></td>
+        <td><%= link_to 'Ver', departamento, class:"btn btn-success" %></td>
+        <td><%= link_to 'Editar', edit_departamento_path(departamento), class:"btn btn-info" %></td>
+        <td><%= link_to 'Remover', departamento, method: :delete, class:"btn btn-danger", data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -54,6 +54,8 @@ class ProdutosController < ApplicationController
         @produtos = Produto.where "nome like ?", "%#{@nome}%"
     end
 
+    private
+
     def produto_params
         params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
     end

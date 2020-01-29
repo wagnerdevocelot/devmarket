@@ -1,11 +1,9 @@
 <%= form_with(model: departamento, local: true) do |form| %>
   <% if departamento.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(departamento.errors.count, "error") %> prohibited this departamento from being saved:</h2>
-
       <ul>
         <% departamento.errors.full_messages.each do |message| %>
-          <li><div class="alert alert-danger" role="alert"><%= message %></div></li>
+          <div class="alert alert-danger" role="alert"><%= message %></div>
         <% end %>
       </ul>
     </div>
