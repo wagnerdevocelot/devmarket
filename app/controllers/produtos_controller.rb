@@ -1,30 +1,31 @@
 class ProdutosController < ApplicationController
 
+    before_action :set_produto, only: [:edit, :update, :destroy]
+
     def index
         @produtos = Produto.order(name: :desc).limit 6
         @produto_com_desconto = Produto.order(:preco).limit 1
     end
 
     def create
-        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
-        @produto = Produto.new valores
-        @departamentos = Departamento.all
+        @produto = Produto.new produto_params
+        set_departamentos
         if @produto.save
             flash[:notice] = "Produto salvo com sucesso!"
             redirect_to root_path
         else
+            set_departamentos
             render :new
         end
     end
 
     def new
         @produto = Produto.new
-        @departamentos = Departamento.all
+        set_departamentos
     end
 
     def destroy
-        id = params[:id]
-        @produto = Produto.destroy id
+        @produto.destroy
         if @produto.destroy
             flash[:notice] = "Produto deletado com sucesso!"
             redirect_to root_path
@@ -34,21 +35,16 @@ class ProdutosController < ApplicationController
     end
 
     def edit
-        id = params[:id]
-        @produto = Produto.find(id)
-        @departamentos = Departamento.all   
+        set_departamentos   
         render :edit     
     end
 
     def update
-        id = params[:id]
-        @produto = Produto.find(id)
-        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
-        if @produto.update valores
+        if @produto.update produto_params
             redirect_to root_path
             flash[:notice] = "Editado com sucesso!"
         else
-            @departamentos = Departamento.all 
+            set_departamentos 
             render :edit
         end
     end
@@ -56,6 +52,17 @@ class ProdutosController < ApplicationController
     def busca
         @nome = params[:nome]
         @produtos = Produto.where "nome like ?", "%#{@nome}%"
+    end
 
+    def produto_params
+        params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
+    end
+
+    def set_produto
+        @produto = Produto.find(params[:id])
+    end
+
+    def set_departamentos
+        @departamentos = Departamento.all
     end
 end
