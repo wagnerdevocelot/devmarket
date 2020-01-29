@@ -10,6 +10,7 @@
         <tr>
             <td>Nome</td>
             <td>Descrição</td>
+            <td>Departamento</div>
             <td>Preço</td>
             <td>Quantidade</td>
             <td colspan='1'>
@@ -20,8 +21,10 @@
         <tr>
             <td><%= produto.nome %></td>
             <td><%= produto.descricao %></td>
+            <td><%= produto.departamento.nome %></td>
             <td><%= produto.preco %></td>
             <td><%= produto.quantidade %></td>
+            <td><%= link_to 'Editar', edit_produto_path(produto), class:"btn btn-info" %></td>
             <td><%= button_to "Remover", produto, method: :delete, class:"btn btn-danger",
             data: {confirm: "Deseja remover o produto #{produto.nome}?"} %></td>
         </tr>

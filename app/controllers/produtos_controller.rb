@@ -6,8 +6,9 @@ class ProdutosController < ApplicationController
     end
 
     def create
-        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade)
+        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
         @produto = Produto.new valores
+        @departamentos = Departamento.all
         if @produto.save
             flash[:notice] = "Produto salvo com sucesso!"
             redirect_to root_path
@@ -29,6 +30,26 @@ class ProdutosController < ApplicationController
             redirect_to root_path
         else
             render :index
+        end
+    end
+
+    def edit
+        id = params[:id]
+        @produto = Produto.find(id)
+        @departamentos = Departamento.all   
+        render :edit     
+    end
+
+    def update
+        id = params[:id]
+        @produto = Produto.find(id)
+        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
+        if @produto.update valores
+            redirect_to root_path
+            flash[:notice] = "Editado com sucesso!"
+        else
+            @departamentos = Departamento.all 
+            render :edit
         end
     end
 

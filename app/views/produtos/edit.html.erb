@@ -1,6 +1,4 @@
-<% @produto.errors.full_messages.each do |mensagem| %>
-    <div class="alert alert-danger" role="alert"><%= mensagem %></div>
-<% end %>
+
 
 
 <%= form_for @produto do |form| %>
@@ -50,7 +48,7 @@
         </div>
     </div>
 
-<%= form.submit "Criar", class:"btn btn-primary" %>            
+<%= form.submit "Editar", class:"btn btn-primary" %>            
 <% end %>
 
 
