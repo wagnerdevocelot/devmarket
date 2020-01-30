@@ -5,8 +5,9 @@ DevMaket é uma plataforma de produtos voltados a comunidade desenvolvedora
 ##  Como rodar localmente
 1. Clone ou de um fork através do git ou baixe o pacote compactado
 2. Instale as dependências usando o comando`bundle install`
-3. Inicie o servidor com o comando `rails s`. A aplicação irá rodar na porta http://localhost:3000/ 
-4. Vá até http://localhost:3000/ no seu browser e cadastre produtos e suas categorias
+3. Rode no terminal `rails db:create db:migrate` para criar o bando de dados e rodar as migrações.
+4. Inicie o servidor com o comando `rails s`. A aplicação irá rodar na porta http://localhost:3000/ 
+5. Vá até http://localhost:3000/ no seu browser e cadastre produtos e suas categorias
 
 ## User Stories
 - Usuário pode cadastras produtos
