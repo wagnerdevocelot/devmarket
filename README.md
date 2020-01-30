@@ -41,4 +41,9 @@ DevMaket é uma plataforma de produtos voltados a comunidade desenvolvedora
 ## Como é a aplicação
 
 
+![](https://miro.medium.com/max/1363/1*00E7txt10IAKUAZ30mMjQQ.png)
+
+
+
+
 
