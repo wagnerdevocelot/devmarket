@@ -10,7 +10,7 @@ DevMaket é uma plataforma de produtos voltados a comunidade desenvolvedora
 5. Vá até http://localhost:3000/ no seu browser e cadastre produtos e suas categorias
 
 ## User Stories
-- Usuário pode cadastras produtos
+- Usuário pode cadastrar produtos
 - Usuário pode cadastrar categorias
 
 ## Features
